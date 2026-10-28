@@ -1,3 +1,4 @@
 .DS_Store
 # videos exceed GitHub 100MB limit; kept local only
 *.mp4
+.gstack/

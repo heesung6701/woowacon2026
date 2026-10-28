@@ -62,10 +62,12 @@ const chunks = md.split(/^---\s*$/m).slice(1);
 const slides = [];
 for (const chunk of chunks) {
   const lines = chunk.split('\n');
-  const notes = [], refs = [], rest = [];
+  const notes = [], refs = [], rest = [], figs = [];
   let h1 = null, h2 = null;
   for (const l of lines) {
-    if (/^# /.test(l)) h1 = l.slice(2).trim();
+    const img = l.match(/^!\[(.*?)\]\((.+?)\)\s*$/);
+    if (img) figs.push(`<figure><img src="${esc(img[2])}" alt="${esc(img[1])}" loading="lazy"><figcaption>${inline(img[1])}</figcaption></figure>`);
+    else if (/^# /.test(l)) h1 = l.slice(2).trim();
     else if (/^## /.test(l)) h2 = l.slice(3).trim();
     else if (l.startsWith('🎙')) notes.push(l.replace(/^🎙\s*/, ''));
     else if (l.startsWith('📷')) refs.push(l.replace(/^📷\s*/, ''));
@@ -90,7 +92,10 @@ for (const chunk of chunks) {
   slides.push(
     `<section class="slide${cover ? ' cover' : ''}">` +
       (cover ? '' : `<div class="eyebrow">${eyebrow ? esc(eyebrow) : ''}</div>`) +
-      `<h2>${inline(coverTitle)}</h2><div class="body">${body(rest)}</div>` +
+      `<h2>${inline(coverTitle)}</h2>` +
+      (figs.length
+        ? `<div class="row"><div class="body">${body(rest)}</div><div class="figs">${figs.join('')}</div></div>`
+        : `<div class="body">${body(rest)}</div>`) +
       `<aside class="notes">${noteHtml}</aside></section>`
   );
 }
@@ -118,6 +123,11 @@ html,body{height:100%;background:var(--page);color:var(--ink);overflow:hidden;
 h2{font-size:38px;line-height:1.25;font-weight:800;margin-bottom:18px;letter-spacing:-.01em}
 .body{flex:1;overflow:hidden;font-size:28px;line-height:1.5;color:var(--ink)}
 .body>*+*{margin-top:.5em}
+.row{flex:1;display:flex;gap:28px;min-height:0}.row .body{flex:1;min-width:0}
+.figs{flex:0 0 44%;display:flex;flex-direction:column;justify-content:center;gap:12px;min-height:0}
+figure{min-height:0;display:flex;flex-direction:column}
+figure img{width:100%;max-height:100%;object-fit:contain;border-radius:10px;border:1px solid var(--line);background:#000}
+figcaption{font-size:13px;color:var(--muted);margin-top:6px;text-align:center}
 ul,ol{padding-left:1.2em}li{margin:.3em 0}li::marker{color:var(--accent)}
 strong{color:var(--accent);font-weight:700}
 code{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.82em;background:var(--code-bg);border:1px solid var(--line);border-radius:5px;padding:0 .3em;color:var(--code-ink)}
