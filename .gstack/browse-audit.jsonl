@@ -1,0 +1,8 @@
+{"ts":"2026-10-28T09:02:50.240Z","cmd":"goto","args":"https://woowacon.com/","origin":"https://woowacon.com/","durationMs":262,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-10-28T09:02:50.297Z","cmd":"text","args":"","origin":"https://woowacon.com/","durationMs":2,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-10-28T09:02:50.386Z","cmd":"links","args":"","origin":"https://woowacon.com/","durationMs":3,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-10-28T09:02:54.576Z","cmd":"wait","args":"--networkidle","origin":"https://woowacon.com/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-10-28T09:02:54.632Z","cmd":"text","args":"","origin":"https://woowacon.com/","durationMs":4,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-10-28T09:02:54.741Z","cmd":"goto","args":"https://woowacon.com/sessions","origin":"https://woowacon.com/sessions","durationMs":58,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-10-28T09:02:55.375Z","cmd":"wait","args":"--networkidle","origin":"https://woowacon.com/sessions","durationMs":564,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-10-28T09:02:55.428Z","cmd":"text","args":"","origin":"https://woowacon.com/sessions","durationMs":2,"status":"ok","hasCookies":false,"mode":"launched"}

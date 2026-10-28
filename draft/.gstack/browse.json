@@ -1,0 +1,9 @@
+{
+  "pid": 75137,
+  "port": 45855,
+  "token": "d60d6d01-f7de-4a8d-a7e3-5b48092cf42b",
+  "startedAt": "2026-10-28T09:17:31.306Z",
+  "serverPath": "/Users/quokkaman/.claude/skills/gstack/browse/src/server.ts",
+  "mode": "launched",
+  "configHash": "303a7eeccc03078b"
+}
